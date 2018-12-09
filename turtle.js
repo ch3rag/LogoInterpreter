@@ -10,7 +10,8 @@ function Turtle(x, y, angle) {
         rotate(this.angle);  
         this.pen = true;      
         this.vars = {};
-        stroke(255,255,255);
+        stroke(0);
+        fill(0);
     }
 
     this.setColor = function(color) {
@@ -21,7 +22,10 @@ function Turtle(x, y, angle) {
         let index = 0;
         let amt = 0;
         let angle = 0;
-        //console.log(tokens);
+        let red;
+        let blue;
+        let green;
+        let alpha;
         while(index < tokens.length) {
             switch(tokens[index]) {
                 case "LET":
@@ -29,12 +33,12 @@ function Turtle(x, y, angle) {
                     index++;
                     break;
                 case "SETCOLOR":
-                    let red = literalOrVar(tokens[index += 2]);
-                    let green = literalOrVar(tokens[++index]);
-                    let blue = literalOrVar(tokens[++index]);
-                    let alpha = literalOrVar(tokens[++index]);
+                     red = literalOrVar(tokens[index += 2]);
+                     green = literalOrVar(tokens[++index]);
+                     blue = literalOrVar(tokens[++index]);
+                     alpha = literalOrVar(tokens[++index]);
                     stroke(red, green, blue, alpha);
-                    //console.log(red, green, blue);
+                    fill(red, green, blue, alpha);
                     index++;
                     break;
                 case "FORWARD":
@@ -81,9 +85,7 @@ function Turtle(x, y, angle) {
             index++;
         }
     }
-
     this.move = function(amt) {
-        //console.log("MOVING: " + String(amt));
         amt = amt? amt : 0;
         if(this.pen) {
             line(0, 0, amt, 0);
@@ -92,7 +94,6 @@ function Turtle(x, y, angle) {
     }
 
     this.rotate = function(angle) {
-        //console.log("ROTATING: " + String(angle));
         angle = angle? angle : 0;
         rotate(radians(angle));
     }   
@@ -100,8 +101,7 @@ function Turtle(x, y, angle) {
 
 literalOrVar = function(string = "") {
     string = string.replace(/([A-Z]+)/g, "turtle.vars.$1");
-    let result;
-    //console.log(string);
+    let result = 0;
     try {
         result = eval(string);
     } catch (e) {

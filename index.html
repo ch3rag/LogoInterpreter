@@ -2,29 +2,78 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="view-port" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scallable=0">
+        <meta name="view-port" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <title>Logo Interpreter</title>
         <script src="p5/p5.js"></script>
         <script src="p5/addons/p5.dom.js"></script>
         <script src="p5/addons/p5.sound.js"></script>
         <script src="turtle.js"></script>
         <script src="sketch.js"></script>
-        
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
+        <header>
             <h2>Logo Real Time Interpreter</h2>
-            <strong>Command List: </strong>
-            <ul> 
-                <li>LET [VAR_NAME VALUE]</li>
-                <li>SETCOLOR [RED GREEN BLUE ALPHA]</li>
-                <li>FORWARD AMOUNT</li>
-                <li>BACKWARD AMOUNT</li>
-                <li>RIGHT ANGLE</li>
-                <li>LEFT ANGLE</li>
-                <li>PENUP</li>
-                <li>PENDOWN</li>
-                </ul>
-            <textarea id = "command" rows = 5 cols = 85>LET [I 0] REPEAT 120 [RIGHT 3 PENUP FORWARD 1 PENDOWN LET [J 0] REPEAT 120 [SETCOLOR [(125-I) (255-J) (255-I*4) I] FORWARD 5 LEFT 3 LET [J (J+1)]] LET [I (I+1)]]</textarea> <br>
-            <br>
+        </header>
+        <div id="sketch-holder"></div>
+        <h4>Input</h4>
+        <!--LET [I 0] REPEAT 120 [RIGHT 3 PENUP FORWARD 1 PENDOWN LET [J 0] REPEAT 120 [SETCOLOR [(125-I) (255-J) (255-I*4) I] FORWARD 5 LEFT 3 LET [J (J+1)]] LET [I (I+1)]]-->
+        <textarea id = "command" rows = 10 cols = 180>LET [I 0] REPEAT 400 [FORWARD I RIGHT 60 LET [I I+2] SETCOLOR [I/2-255 0 255/I 255] RIGHT 80]</textarea> <br>
+        <table class="u-full-width">
+            <thead>
+                <th>Command Name</th>
+                <th>Description</th>
+                <th>Example</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FORWARD</td>
+                    <td>Moves turtle forward to a specified distance</td>
+                    <td>FORWARD 10</td>
+                </tr>
+                <tr>
+                    <td>BACKWARD</td>
+                    <td>Moves turtle backward to a specified distance</td>
+                    <td>BACKWARD 20</td>
+                    </tr> 
+                <tr>
+                    <td>PENUP</td>
+                    <td>Disables drawing while moving turtle</td>
+                    <td>PENUP</td>
+                </tr>   
+                <tr>
+                    <td>PENDOWN</td>
+                    <td>Enables drawing while moving turtle</td>
+                    <td>PENDOWN</td>
+                </tr>   
+                <tr>
+                    <td>RIGHT</td>
+                    <td>Rotates the turtle to right by a specified angle</td>
+                    <td>RIGHT 100</td>
+                </tr> 
+                <tr>
+                    <td>LEFT</td>
+                    <td>Rotates the turtle to left by a specified angle</td>
+                    <td>LEFT 90</td>
+                </tr>  
+                <tr>
+                    <td>REPEAT</td>
+                    <td>Repeats a set of commands specified number of times</td>
+                    <td>REPEAT 4 [FORWARD 50 RIGHT 90]</td>
+                </tr>
+                <tr>
+                    <td>SETCOLOR</td>
+                    <td>Sets the color of the pen according to RED, GREEN, BLUE and ALPHA Values supplied</td>
+                    <td>SETCOLOR [255 0 124 255]</td>
+                </tr> 
+                <tr>
+                    <td>LET</td>
+                    <td>Sets or Declare a GLOBAL variable</td>
+                    <td>LET [I 0]</td>
+                </tr> 
+            </tbody>
+        </table>
+        <p id="credit">Created and Maintained by Chirag Singh Rajput</p><br>
     </body>
 </html>
