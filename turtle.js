@@ -9,7 +9,11 @@ function Turtle(x, y, angle) {
         translate(this.x, this.y);
         rotate(this.angle);  
         this.pen = true;      
-        this.vars = {};
+        this.vars =  {
+            "SIN": function(x) {return Math.sin(radians(x))},
+            "COS": function(x) {return Math.cos(radians(x))},
+            "RANDOM": Math.random
+        };
         stroke(0);
         fill(0);
     }
@@ -95,12 +99,12 @@ function Turtle(x, y, angle) {
 
     this.rotate = function(angle) {
         angle = angle? angle : 0;
-        rotate(radians(angle));
+        rotate(angle);
     }   
 }
 
 literalOrVar = function(string = "") {
-    string = string.replace(/([A-Z]+)/g, "turtle.vars.$1");
+    string = string.replace(/([A-Z]+)/g, "turtle.vars.$1")
     let result = 0;
     try {
         result = eval(string);

@@ -1,9 +1,21 @@
 let turtle;
 let textArea;
+_BG_COLOR_ = "#ffffff";
+
+
+const bgColorSelector = document.querySelector("#bg-color");
+bgColorSelector.addEventListener("change", () => {
+    _BG_COLOR_ = bgColorSelector.value; 
+    console.log(_BG_COLOR_);
+    run();
+});
+
 function setup() {
-    const canvas = createCanvas(800, 800);
+    const canvas = createCanvas(windowWidth * 0.98, windowHeight * 0.8);
+    background(0);
     canvas.parent("sketch-holder");
     smooth();
+    angleMode(DEGREES);
     strokeWeight(2);
     stroke(0);
     noFill();
@@ -14,7 +26,7 @@ function setup() {
 }
 
 function run() {
-    background(255);
+    background(_BG_COLOR_);
     push();
     turtle.reset();
     let command = parse(textArea.value());

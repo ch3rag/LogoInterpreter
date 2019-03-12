@@ -7,19 +7,21 @@
         <script src="p5/p5.js"></script>
         <script src="p5/addons/p5.dom.js"></script>
         <script src="p5/addons/p5.sound.js"></script>
-        <script src="turtle.js"></script>
-        <script src="sketch.js"></script>
+
         <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>
-            <h2>Logo Real Time Interpreter</h2>
+            <h2>Real Time Logo Interpreter</h2>
         </header>
         <div id="sketch-holder"></div>
-        <h4>Input</h4>
+ 
         <!--LET [I 0] REPEAT 120 [RIGHT 3 PENUP FORWARD 1 PENDOWN LET [J 0] REPEAT 120 [SETCOLOR [(125-I) (255-J) (255-I*4) I] FORWARD 5 LEFT 3 LET [J (J+1)]] LET [I (I+1)]]-->
-        <textarea id = "command" rows = 10 cols = 180>LET [I 0] REPEAT 400 [FORWARD I RIGHT 60 LET [I I+2] SETCOLOR [I/2-255 0 255/I 255] RIGHT 80]</textarea> <br>
+		<!--LET [J 0.1] LET [I 0] REPEAT 490 [FORWARD J RIGHT 62 LET [I J%256] SETCOLOR [J/I&255 I*J%20 J&10 J%655] RIGHT 98.2 LET [J (J+I*0.04)]]-->
+        <!-- <textarea id = "command" rows = 10 cols = 180>LET [I 0] REPEAT 400 [FORWARD I RIGHT 60 LET [I I+2] SETCOLOR [I/2-255 0 255/I 255] RIGHT 80]</textarea> <br> -->
+        <textarea id = "command" rows = 10 cols = 180>LET [J 0.1] LET [I 0] REPEAT 490 [FORWARD J RIGHT 62 LET [I J%256] SETCOLOR [COS(J)*255 SIN(I)*55 SIN(J)*155 255] RIGHT 98.2 LET [J (J+I*0.03)]]</textarea> <br>
+        Background: <input type="color" id="bg-color" value="#ffffff">
         <table class="u-full-width">
             <thead>
                 <th>Command Name</th>
@@ -63,6 +65,22 @@
                     <td>REPEAT 4 [FORWARD 50 RIGHT 90]</td>
                 </tr>
                 <tr>
+                    <td>SIN()</td>
+                    <td>Computes sine of an angle</td>
+                    <td>SIN(90)</td>
+                </tr>
+                <tr>
+                    <td>COS()</td>
+                    <td>Computes cosine of an angle</td>
+                    <td>COS(90)</td>
+                </tr>
+                <tr>
+                    <td>RANDOM()</td>
+                    <td>Computes random number between 0 and 1</td>
+                    <td>RANDOM()</td>
+                </tr>
+                    <tr>
+                <tr>
                     <td>SETCOLOR</td>
                     <td>Sets the color of the pen according to RED, GREEN, BLUE and ALPHA Values supplied</td>
                     <td>SETCOLOR [255 0 124 255]</td>
@@ -75,5 +93,7 @@
             </tbody>
         </table>
         <p id="credit">Created and Maintained by Chirag Singh Rajput</p><br>
+        <script src="turtle.js"></script>
+        <script src="sketch.js"></script>
     </body>
 </html>
