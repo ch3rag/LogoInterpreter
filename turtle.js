@@ -1,3 +1,14 @@
+const _PI_BY_180_ = Math.PI/180;
+
+function _sine(d) {
+    return Math.sin(d * _PI_BY_180_);
+}
+
+function _cosine(d) {
+    return Math.cos(d * _PI_BY_180_);
+}
+
+
 function Turtle(x, y, angle) {
     this.x = x;
     this.y = y;
@@ -10,8 +21,8 @@ function Turtle(x, y, angle) {
         rotate(this.angle);  
         this.pen = true;      
         this.vars =  {
-            "SIN": function(x) {return Math.sin(radians(x))},
-            "COS": function(x) {return Math.cos(radians(x))},
+            "SIN": _sine,
+            "COS": _cosine, 
             "RANDOM": Math.random
         };
         stroke(0);
